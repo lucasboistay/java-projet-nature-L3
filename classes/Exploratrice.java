@@ -26,6 +26,8 @@ public class Exploratrice extends Agent{
         this.duree_vie = DUREE_VIE_MAX;
     }
 
+    // GETTEUR
+
     public int getEnergie(){
         return this.energie;
     }
@@ -42,8 +44,48 @@ public class Exploratrice extends Agent{
         return this.feuille_porte;
     }
 
+    // SETTEUR
+
+    public void energieDiminue(){
+        this.energie --;
+    }
+
+    public void tempsPasseVie(){
+        this.duree_vie --;
+    }
+
+    /**
+     * Renvoie 1 si l'ajout a été fait
+     * Renvoie -1 sinon
+     */
+    public int addChampiPorte(Champignon c){
+        if(this.champi_porte.size() < MAX_CHAMPI_PORTE){
+            this.champi_porte.add(c);
+            return 1;
+        }
+        else{
+            return -1;
+        }
+        
+    }
+
+    /**
+     * Renvoie 1 si l'ajout a été fait
+     * Renvoie -1 sinon
+     */
+    public int addFeuille(Feuille f){
+        if(this.feuille_porte != NULL){
+            this.feuille_porte = f;
+            return 1;
+        }
+        else{
+            return -1;
+        }
+    }
 
 
-
+    public String toString(){
+        return super.toString() + " Stats : {energie:" + this.energie + ",duree_vie:" + this.duree_vie+",Feuille:"+this.feuille_porte+",Champignon["+this.champi_porte.toString()+"]}" 
+    }
 
 }
