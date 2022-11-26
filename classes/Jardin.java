@@ -52,9 +52,15 @@ public class Jardin{
 		a.setPosition(-1,-1);
 		return a;
 	}
-
+	/**
+	 * Renvoie False si la case n'est pas vide ou est hors du tableau
+	 * Renvoie True sinon
+	 */
 	public boolean caseVide(int x,int y){
-		if(Agent[x][y] != null){
+		if(x<0 || y<0 || x>=tabAgent.length || y>=tabAgent[0].length){
+			return false;
+		}
+		if(tabAgent[x][y] != null){
 			return false;
 		}
 		else{

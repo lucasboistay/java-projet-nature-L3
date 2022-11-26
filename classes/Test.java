@@ -57,18 +57,24 @@ public class Test {
 		System.out.println("--------------------------------------");
 
 		/***************************************************/
-
-		Exploratrice explo1 = new Exploratrice();
-		System.out.println(explo1);
-
-		Agent agent2 = new Agent("Reine");
-		System.out.println(agent2);
-
 		Jardin j = new Jardin(5,5);
 
-		j.setCase(1,1,explo1);
-		j.setCase(2,2,agent2);
+		Reine reine = Reine.INSTANCE;
+
+		j.setCase(0,0,reine);
+
+		System.out.println("Reine : " + reine);
+
+		reine.popExplo(j);
+
+		reine.popExplo(j);
+
+		reine.popExplo(j);
+		
 		ArrayList<Agent> listeAgent = j.lesAgents();
+
+
+
 
 		System.out.println("Liste des Agents présent actuellement : ");
 		for(Agent a : listeAgent){

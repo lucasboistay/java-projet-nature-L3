@@ -13,8 +13,8 @@ public class Agent{
 	private static int nbAgent = 0;
 	private final String type;
 
-	private int x;
-	private int y;
+	protected int x;
+	protected int y;
 
 	public Agent(String type){
 		this.ident = nbAgent ++;

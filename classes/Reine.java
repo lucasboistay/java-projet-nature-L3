@@ -13,35 +13,35 @@ public class Reine extends Agent{
 
     public static Reine INSTANCE = new Reine();
 
-    private static ArrayList<Exploratrice> explo_list;
+    public static ArrayList<Exploratrice> explo_list;
 
     private Reine(){
         super("Reine");
-    }
 
-    // GETTEUR 
-    public static getExploList(){
-        return this.explo_list;
+        this.explo_list = new ArrayList<>();
     }
 
     // SETTEUR
-    public static int popExplo(Jardin j){
-        int dx = (int) (Math.random() * 2) - 1;
-        int dy = (int) (Math.random() * 2) - 1;
+    public int popExplo(Jardin j){
+        int dx = (int) (Math.random() * 3) - 1;
+        int dy = (int) (Math.random() * 3) - 1;
 
-        while((dx==0 && dy == 0)|| j.caseVide(super.x+dx,super.y+dy)){ // ON évite que la fourmi spawn sur la case Reine ou sur un autre agent
-            dx = (int) (Math.random() * 2) - 1;
-            dy = (int) (Math.random() * 2) - 1;
+        while((dx==0 && dy == 0) || (!j.caseVide(this.x+dx,this.y+dy))){ // ON évite que la fourmi spawn sur la case Reine ou sur un autre agent
+            System.out.println("Position : "+x+","+y+"Tentative : " + dx + " " + dy);
+            dx = (int) (Math.random() * 3) - 1;
+            dy = (int) (Math.random() * 3) - 1;
         }
 
         Exploratrice e = new Exploratrice();
-        j.setCase(super.x+dx,super.y+dy,e);
+        j.setCase(this.x+dx,this.y+dy,e);
 
         this.explo_list.add(e);
+
+        return 1;
     }
 
-    public static removeExplo(Exploratrice e){
-        this.explo_list.remove(e);
+    public static void removeExplo(Exploratrice e){
+        Reine.explo_list.remove(e);
     }
 
 }
