@@ -53,6 +53,15 @@ public class Jardin{
 		return a;
 	}
 
+	public boolean caseVide(int x,int y){
+		if(Agent[x][y] != null){
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+
 	public int getLigne(){
 		return this.tabAgent.length;
 	}
