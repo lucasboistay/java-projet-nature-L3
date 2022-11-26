@@ -7,10 +7,16 @@ Un projet en java pour gérer les classes, les héritages sur le thème de la na
 
 /classes contient toutes les classes du projet
 
-## Utilisation : 
+## Installation : 
 
-lancer Test pour voir le rendu 
+Ouvrir le terminal et copier :
+'git clone https://github.com/Rockinfox91/java-projet-nature-L3.git'
 
+Une fois dans le dossier, tapez :
+'cd classes/'
+
+Puis, lancer la commande :
+'java Test"
 
 ## Améliorations :
 
