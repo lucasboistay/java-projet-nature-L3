@@ -13,16 +13,13 @@ public class Reine extends Agent{
 
     public static Reine INSTANCE = new Reine();
 
-    public static ArrayList<Exploratrice> explo_list;
-
     private Reine(){
         super("Reine");
 
-        this.explo_list = new ArrayList<>();
     }
 
     // SETTEUR
-    public int popExplo(Jardin j){
+    public Exploratrice popExplo(Jardin j){
         int dx = (int) (Math.random() * 3) - 1;
         int dy = (int) (Math.random() * 3) - 1;
 
@@ -35,13 +32,11 @@ public class Reine extends Agent{
         Exploratrice e = new Exploratrice();
         j.setCase(this.x+dx,this.y+dy,e);
 
-        this.explo_list.add(e);
-
-        return 1;
+        return e;
     }
 
-    public static void removeExplo(Exploratrice e){
-        Reine.explo_list.remove(e);
+    public static void removeExplo(Exploratrice e, Jardin j){
+        j.videCaseAgent(e.getX(),e.getY());
     }
 
 }

@@ -61,19 +61,19 @@ public class Test {
 
 		Reine reine = Reine.INSTANCE;
 
-		j.setCase(0,0,reine);
+		j.setCase(2,3,reine);
 
 		System.out.println("Reine : " + reine);
 
 		reine.popExplo(j);
 
-		reine.popExplo(j);
+		Exploratrice e = reine.popExplo(j);
 
-		reine.popExplo(j);
+		j.affiche(6);
+
+		Reine.removeExplo(e,j);
 		
 		ArrayList<Agent> listeAgent = j.lesAgents();
-
-
 
 
 		System.out.println("Liste des Agents présent actuellement : ");
