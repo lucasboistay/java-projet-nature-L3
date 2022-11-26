@@ -7,7 +7,7 @@
 import java.util.ArrayList; 
 
 public class Agent{
-	private static final int MAX_AGENT = 100;
+	public static final int MAX_AGENT = 100;
 
 	private final int ident;
 	private static int nbAgent = 0;

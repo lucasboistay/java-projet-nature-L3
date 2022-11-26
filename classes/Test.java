@@ -33,7 +33,7 @@ public class Test {
 
 		Champignon c1 = new Champignon();
 		if (t.setCase(0,0,c1))
-			System.out.println("Ajout de " +c1+" valide !");
+			System.out.println("Ajout de " +c1+ "valide !");
 		else
 			System.out.println("Ajout incorrect: problème de coordonnées !");
 

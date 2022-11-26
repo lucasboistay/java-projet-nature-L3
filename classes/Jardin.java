@@ -7,8 +7,8 @@
 import java.util.ArrayList;
 
 public class Jardin{
-	private static final int NBLIGNESMAX = 20;
-	private static final int NBCOLONNESMAX = 20;
+	public static final int NBLIGNESMAX = 20;
+	public static final int NBCOLONNESMAX = 20;
 
 	private ArrayList<Agent> listeAgent;
 	private Agent[][] tabAgent;

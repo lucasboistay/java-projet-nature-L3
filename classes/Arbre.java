@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Arbre extends Ressource{
 
-	private static final int TAILLE_MAX = 3;
+	public static final int TAILLE_MAX = 3;
 
 	private final int taille;
 

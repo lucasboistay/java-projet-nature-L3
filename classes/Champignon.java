@@ -6,7 +6,7 @@
 
 public class Champignon extends Ressource{
 	public static final int ENERGIE_RENDU = 5;
-	private static final int DUREE_VIE_MAX = 20;
+	public static final int DUREE_VIE_MAX = 20;
 
 	private int dureeVie;
 
@@ -25,7 +25,7 @@ public class Champignon extends Ressource{
 	}
 
 	public String toString(){
-		return super.toString() + "Vie : "+this.dureeVie;
+		return super.toString() + " Vie : "+this.dureeVie;
 	}
 
 }

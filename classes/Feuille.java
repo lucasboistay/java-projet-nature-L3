@@ -9,8 +9,8 @@ public class Feuille extends Ressource{
 	private int dureeVie;
 	private int dureeTransfo;
 
-	private static final int DUREE_VIE_MAX = 10;
-	private static final int DUREE_TRANSFO_MAX = 3;
+	public static final int DUREE_VIE_MAX = 10;
+	public static final int DUREE_TRANSFO_MAX = 3;
 
 	public Feuille(){
 		super("Feuille",1);
