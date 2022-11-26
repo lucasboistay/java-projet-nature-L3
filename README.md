@@ -10,3 +10,11 @@ Un projet en java pour gérer les classes, les héritages sur le thème de la na
 ## Utilisation : 
 
 lancer Test pour voir le rendu 
+
+
+## Améliorations :
+
+- Finir les classes Agent
+- Créer classe vent pour faire tomber les feuilles
+- Classe d'affichage générale
+- Classe qui fait tourner la simulation
