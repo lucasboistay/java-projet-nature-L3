@@ -74,7 +74,7 @@ public class Exploratrice extends Agent{
      * Renvoie -1 sinon
      */
     public int addFeuille(Feuille f){
-        if(this.feuille_porte != NULL){
+        if(this.feuille_porte != null){
             this.feuille_porte = f;
             return 1;
         }
@@ -85,7 +85,7 @@ public class Exploratrice extends Agent{
 
 
     public String toString(){
-        return super.toString() + " Stats : {energie:" + this.energie + ",duree_vie:" + this.duree_vie+",Feuille:"+this.feuille_porte+",Champignon["+this.champi_porte.toString()+"]}" 
+        return super.toString() + " Stats : {energie:" + this.energie + ",duree_vie:" + this.duree_vie+"}";
     }
 
 }

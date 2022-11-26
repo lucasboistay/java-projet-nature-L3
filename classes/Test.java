@@ -58,15 +58,15 @@ public class Test {
 
 		/***************************************************/
 
-		Agent agent1 = new Agent("Fourmi");
-		System.out.println(agent1);
+		Exploratrice explo1 = new Exploratrice();
+		System.out.println(explo1);
 
 		Agent agent2 = new Agent("Reine");
 		System.out.println(agent2);
 
 		Jardin j = new Jardin(5,5);
 
-		j.setCase(1,1,agent1);
+		j.setCase(1,1,explo1);
 		j.setCase(2,2,agent2);
 		ArrayList<Agent> listeAgent = j.lesAgents();
 
