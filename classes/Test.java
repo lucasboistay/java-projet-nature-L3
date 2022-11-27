@@ -94,11 +94,15 @@ public class Test {
 			System.out.println(explo);
 		}
 
-		System.out.println("-----------------Deplacement Fourmis--------------------");
-
 		Scanner scan = new Scanner(System.in);
 
-		for(int i=0;i<20;i++){
+		scan.nextLine();
+
+		System.out.println("-----------------Deplacement Fourmis--------------------");
+
+		
+
+		for(int i=0;i<50;i++){
 			for(Exploratrice explo : listeExplo){
 				explo.moveToRand(j);
 			}
