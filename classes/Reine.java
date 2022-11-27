@@ -19,24 +19,46 @@ public class Reine extends Agent{
     }
 
     // SETTEUR
-    public Exploratrice popExplo(Jardin j){
+
+    /**
+     * Renvoie une Exploratrice qui spawn aléatoirement autour de la reine
+     * Renvoie null si pas de possibilité de spawn
+     */
+    public Exploratrice popExplo(Jardin jard){
         int dx = (int) (Math.random() * 3) - 1;
         int dy = (int) (Math.random() * 3) - 1;
 
-        while((dx==0 && dy == 0) || (!j.caseVide(this.x+dx,this.y+dy))){ // ON évite que la fourmi spawn sur la case Reine ou sur un autre agent
-            System.out.println("Position : "+x+","+y+"Tentative : " + dx + " " + dy);
+        boolean b = false; // ON teste si il existe une case vide autour de la reine
+        for(int i=-1 ; i < 2 ; i ++){
+            for(int j =-1 ; j < 2 ; j++){
+                if(jard.caseVide(this.x + i,this.y + j)){
+                    b = true;
+                }
+            }
+        }
+
+        if(!b){ //On renvoie null si pas de case dispo
+            System.out.println("PAS DE CASE DISPO, pas de fourmis créer...");
+            return null;
+        }
+
+        while((dx==0 && dy == 0) || (!jard.caseVide(this.x+dx,this.y+dy))){ // ON évite que la fourmi spawn sur la case Reine ou sur un autre agent
             dx = (int) (Math.random() * 3) - 1;
             dy = (int) (Math.random() * 3) - 1;
         }
 
         Exploratrice e = new Exploratrice();
-        j.setCase(this.x+dx,this.y+dy,e);
+        jard.setCase(this.x+dx,this.y+dy,e);
 
         return e;
     }
 
     public static void removeExplo(Exploratrice e, Jardin j){
         j.videCaseAgent(e.getX(),e.getY());
+    }
+
+    public String toString(){
+        return super.toString();
     }
 
 }

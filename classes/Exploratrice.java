@@ -12,6 +12,8 @@ public class Exploratrice extends Agent{
     public static final int MAX_CHAMPI_PORTE = 3;
     public static final int DUREE_VIE_MAX = 50;
 
+    private static ArrayList<Exploratrice> listeExplo = new ArrayList<>();
+
     private int energie;
     private int duree_vie;
 
@@ -24,10 +26,13 @@ public class Exploratrice extends Agent{
 
         this.energie = ENERGIE_MAX;
         this.duree_vie = DUREE_VIE_MAX;
+        this.listeExplo.add(this);
     }
 
     // GETTEUR
-
+    public static ArrayList<Exploratrice> getExploList(){
+        return listeExplo;
+    }
     public int getEnergie(){
         return this.energie;
     }
@@ -81,6 +86,47 @@ public class Exploratrice extends Agent{
         else{
             return -1;
         }
+    }
+
+    /**
+     * Permet de déplacer la fourmi dans le jardin jard donné
+     */
+    public void moveTo(int x,int y, Jardin jard){
+        jard.videCaseAgent(this.x,this.y);
+        super.setPosition(x,y);
+        jard.setCase(x,y,this);
+    }
+
+    /**
+     * Déplace la fourmi à une position aléatoire autour d'elle
+     * Renvoie 1 si c'est réussi
+     * Renvoie -1 si la fourmi n'a pas bougé
+     */
+    public int moveToRand(Jardin jard){
+        int dx = (int) (Math.random() * 3) - 1;
+        int dy = (int) (Math.random() * 3) - 1;
+
+        boolean b = false; // ON teste si il existe une case vide autour de la fourmi
+        for(int i=-1 ; i < 2 ; i ++){
+            for(int j =-1 ; j < 2 ; j++){
+                if(jard.caseVide(this.x + i,this.y + j)){
+                    b = true;
+                }
+            }
+        }
+
+        if(!b){ //On renvoie null si pas de case dispo
+            System.out.println("PAS DE CASE DISPO, pas de déplacement.");
+            return -1;
+        }
+
+        while((dx==0 && dy == 0) || (!jard.caseVide(this.x+dx,this.y+dy))){ // ON évite que la fourmi spawn sur la case Reine ou sur un autre agent
+            dx = (int) (Math.random() * 3) - 1;
+            dy = (int) (Math.random() * 3) - 1;
+        }
+
+        this.moveTo(this.x+dx,this.y+dy,jard);
+        return 1;
     }
 
 

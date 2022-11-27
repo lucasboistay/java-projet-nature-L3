@@ -6,6 +6,7 @@
  */
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Test {
 
@@ -57,21 +58,58 @@ public class Test {
 		System.out.println("--------------------------------------");
 
 		/***************************************************/
-		Jardin j = new Jardin(5,5);
+
+		System.out.println("----------------- TEST DES AGENTS ---------------------");
+		Jardin j = new Jardin(10,10);
 
 		Reine reine = Reine.INSTANCE;
 
-		j.setCase(2,3,reine);
+		j.setCase(0,5,reine);
 
 		System.out.println("Reine : " + reine);
 
+		System.out.println("--------------- Ajout de 3 fourmis --------------");
+
+		reine.popExplo(j);
 		reine.popExplo(j);
 
 		Exploratrice e = reine.popExplo(j);
 
+		System.out.println("Fourmi suivi : " + e);
+
 		j.affiche(6);
 
-		Reine.removeExplo(e,j);
+		System.out.println("------------------Ajout de 3 fourmis ------------------");
+
+		
+		reine.popExplo(j);
+		reine.popExplo(j);
+		reine.popExplo(j);
+
+		j.affiche(6);
+
+		ArrayList<Exploratrice> listeExplo = Exploratrice.getExploList();
+		System.out.println("Liste des Explo présent actuellement : ");
+		for(Exploratrice explo : listeExplo){
+			System.out.println(explo);
+		}
+
+		System.out.println("-----------------Deplacement Fourmis--------------------");
+
+		Scanner scan = new Scanner(System.in);
+
+		for(int i=0;i<20;i++){
+			for(Exploratrice explo : listeExplo){
+				explo.moveToRand(j);
+			}
+			System.out.println("\033\143");
+			j.affiche(5);
+
+			scan.nextLine();
+
+		}
+
+		System.out.println("--------------------------------------");
 		
 		ArrayList<Agent> listeAgent = j.lesAgents();
 
@@ -80,8 +118,6 @@ public class Test {
 		for(Agent a : listeAgent){
 			System.out.println(a);
 		}
-
-		j.affiche(6);
 
 		System.out.println(j);
 
