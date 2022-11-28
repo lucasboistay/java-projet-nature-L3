@@ -131,6 +131,59 @@ public class Simulation {
         return "Aucune";
     }
 
+    private String fourmiAttrappe(){
+        ArrayList<Exploratrice> listeExplo = Exploratrice.getExploList();
+        String log = "";
+
+        for(Exploratrice e : listeExplo){
+
+            int x = e.getX();
+            int y = e.getY();
+
+            
+
+            if(ter.getCase(x,y) == null){
+                log += e.toString() + " n'a rien trouvé.\n";
+                continue;
+            }
+            if(ter.getCase(x,y).type == "Feuille"){
+                log += e.toString() + " a trouvé une feuille ";
+                if (e.getFeuille() == null){
+                    Feuille f = Feuille.getFeuilleByID(ter.getCase(x,y).ident);
+                    e.addFeuille(f);
+                    f.estPorte = true;
+                    ter.videCase(x,y);
+                    log += "et l'a prise sur lui !\n";
+                }
+                else{
+                    log += "mais n'avais pas de place\n";
+                    continue;
+                }
+            }
+            else if(ter.getCase(x,y).type == "Champignon"){
+                log += e.toString() + " a trouvé un champignon ";
+                if (e.getChampiPorte().size() < Exploratrice.MAX_CHAMPI_PORTE){
+                    Champignon c = Champignon.getChampiByID(ter.getCase(x,y).ident);
+                    e.addChampiPorte(c);
+                    c.estPorte = true;
+                    ter.videCase(x,y);
+                    log += "et l'a pris sur lui !\n";
+                }
+                else{
+                    log += "mais n'avais pas de place\n";
+                    continue;
+                }
+            }
+            else{
+                log += e.toString() + " n'a rien trouvé.\n";
+                continue;
+            }
+
+        }
+
+        return log;
+    }
+
     // RENVOIE LES LOGS
     public String iteration(){
         // Vérifie l'age des fourmis
@@ -150,6 +203,7 @@ public class Simulation {
         //Si vide, rien
         //Si feuille Récup si pas de feuille sur elle
         //Si champi, récup si elle a pas MAX_CHAMPI sur elle
+        String fourmiAttrape = fourmiAttrappe();
 
         // Si feuille est sur fourmi : temps transfo -1
 
@@ -160,7 +214,8 @@ public class Simulation {
         moveExplo();
 
         return "Fourmi Né : " + fourmiForme + "\n" + 
-            "banane" + "\n" +
+            "Feuilles Formée : " + "\n" +
+            fourmiAttrape + "\n" + 
             "\n";
 
     }

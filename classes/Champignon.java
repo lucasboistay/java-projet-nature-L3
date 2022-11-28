@@ -23,6 +23,15 @@ public class Champignon extends Ressource{
 		this.estPorte = false;
 	}
 
+	public static Champignon getChampiByID(int id){
+		for(Champignon f : listeChampi){
+			if(f.ident == id){
+				return f;
+			}
+		}
+		return null;
+	}
+
 	public static ArrayList<Champignon> getChampiList(){
         return listeChampi;
     }

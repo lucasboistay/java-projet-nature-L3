@@ -27,6 +27,15 @@ public class Feuille extends Ressource{
 		this.listeFeuille.add(this);
 	}
 
+	public static Feuille getFeuilleByID(int id){
+		for(Feuille f : listeFeuille){
+			if(f.ident == id){
+				return f;
+			}
+		}
+		return null;
+	}
+
 	public static ArrayList<Feuille> getFeuilleList(){
         return listeFeuille;
     }

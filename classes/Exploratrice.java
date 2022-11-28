@@ -27,6 +27,8 @@ public class Exploratrice extends Agent{
         this.energie = ENERGIE_MAX;
         this.duree_vie = DUREE_VIE_MAX;
         this.listeExplo.add(this);
+
+        this.champi_porte = new ArrayList<>();
     }
 
     // GETTEUR
@@ -78,14 +80,8 @@ public class Exploratrice extends Agent{
      * Renvoie 1 si l'ajout a été fait
      * Renvoie -1 sinon
      */
-    public int addFeuille(Feuille f){
-        if(this.feuille_porte != null){
-            this.feuille_porte = f;
-            return 1;
-        }
-        else{
-            return -1;
-        }
+    public void addFeuille(Feuille f){
+        this.feuille_porte = f;
     }
 
     /**
