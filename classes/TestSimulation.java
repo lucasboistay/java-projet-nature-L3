@@ -35,6 +35,8 @@ public class TestSimulation {
 
 		scan.nextLine();
 
+		//Gestion Arguments
+
 		boolean logAffiche = false;
 
 		String log;

@@ -255,6 +255,16 @@ public class Simulation {
                 }
             }
         }
+        //Champi
+        if(listeChampi != null){
+            for(Champignon c : listeChampi){
+                if(c.getDureeVie() == 0){
+                    log += c.toString() + " Retiré\n";
+                    ter.videCase(c.getX(),c.getY());
+                    c.retirer();
+                }
+            }
+        }
 
         return log;
     }

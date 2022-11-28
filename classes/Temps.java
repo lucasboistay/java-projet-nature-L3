@@ -23,6 +23,16 @@ public class Temps extends Agent{
         for(Exploratrice e : listeExplo){
             e.tempsPasseVie();
         }
+
+        // Faire passer temps pour champignons
+
+        ArrayList<Champignon> listeChampi = new ArrayList<>();
+        listeChampi = Champignon.getChampiList();
+
+        for(Champignon c : listeChampi){
+            c.tempsPasseVie();
+        }
+
         // Faire passer temps pour Feuilles
 
         ArrayList<Feuille> listeFeuille = new ArrayList<>();
