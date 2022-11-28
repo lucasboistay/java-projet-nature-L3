@@ -26,6 +26,11 @@ public class Champignon extends Ressource{
 	public static ArrayList<Champignon> getChampiList(){
         return listeChampi;
     }
+
+    public void retirer(){
+    	this.listeChampi.remove(this);
+    	super.initialisePosition();
+    }
 	public int getDureeVie(){
 		return this.dureeVie;
 	}

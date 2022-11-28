@@ -12,15 +12,35 @@ public class Simulation {
     private Jardin jar;
     private Terrain ter;
 
+    private Reine r;
+
     public Simulation(int x, int y){
         this.jar = new Jardin(x,y);
         this.ter = new Terrain(x,y);
 
+        Champignon c1 = new Champignon();
+        Champignon c2 = new Champignon();
+        Champignon c3 = new Champignon();
+        Champignon c4 = new Champignon();
+        Champignon c5 = new Champignon();
+        Champignon c6 = new Champignon();
+        Champignon c7 = new Champignon();
+
+
+
+        ter.setCase(0,0,c1);
+        ter.setCase(2,2,c2);
+        ter.setCase(3,3,c3);
+        ter.setCase(4,4,c4);
+        ter.setCase(1,1,c5);
+        ter.setCase(5,5,c6);
+        ter.setCase(6,6,c7);
+
         this.popTree();
         this.popTree();
         this.popTree();
 
-        Reine r = this.popQueen();
+        this.r = this.popQueen();
         r.popExplo(jar);
 
         System.out.println("----------- INITIALISATION FAITE ------------");
@@ -90,7 +110,29 @@ public class Simulation {
         }
     }
 
-    public void iteration(){
+    private String verifChampi(){
+        ArrayList<Champignon> listeChampi = Champignon.getChampiList();
+
+        ArrayList<Champignon> champiPasPorte = new ArrayList<>();
+
+        for(Champignon c : listeChampi){
+            if(!c.estPorte){
+                champiPasPorte.add(c);
+            }
+            if(champiPasPorte.size() == 3){
+                Exploratrice e = r.popExplo(jar);
+                for (Champignon champ : champiPasPorte){
+                    ter.videCase(champ.getX(),champ.getY());
+                    champ.retirer();   
+                }
+                return e.toString();
+            }
+        }
+        return "Aucune";
+    }
+
+    // RENVOIE LES LOGS
+    public String iteration(){
         // Vérifie l'age des fourmis
         // Vérifie l'age des feuilles
         // Vérifie l'age des Champignons
@@ -102,7 +144,7 @@ public class Simulation {
 
         //Vérifie nombre de champignon sur le sol
         // Si 3 ou plus, créer exploratrice
-
+        String fourmiForme = verifChampi();
 
         //Chaque fourmi vérifie la case sur laquelle elle est
         //Si vide, rien
@@ -116,6 +158,8 @@ public class Simulation {
 
         //Fourmi move. 
         moveExplo();
+
+        return "Fourmi Né : " + fourmiForme;
 
     }
 

@@ -35,15 +35,22 @@ public class TestSimulation {
 
 		scan.nextLine();
 
+		String log;
+
 		for(int i = 0 ; i<iteration;i++){
 
-			s.iteration();
-			
+			log = s.iteration();
+
 			System.out.println("\033\143");
 			System.out.println("---------------------------   I : " + i +"  --------------------------------");
 
 			s.getJardin().affiche(5);
 			s.getTerrain().affiche(5);
+
+			System.out.println("---------------------------  LOGS --------------------------------");
+			System.out.println(log);
+			System.out.println(s.getJardin().toString());
+			System.out.println(s.getTerrain().toString());
 			
 			scan.nextLine();
 		}
