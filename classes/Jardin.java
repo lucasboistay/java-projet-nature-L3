@@ -37,7 +37,7 @@ public class Jardin{
 	public void setCase(int lig,int col, Agent a){
 		this.tabAgent[lig][col] = a;
 		this.addAgent(a);
-		a.setPosition(lig,col);
+		a.seDeplacer(lig,col);
 	}
 
 	public ArrayList<Agent> lesAgents(){
@@ -49,7 +49,7 @@ public class Jardin{
 		this.tabAgent[lig][col] = null;
 
 		this.removeAgent(a);
-		a.setPosition(-1,-1);
+		a.seDeplacer(-1,-1);
 		return a;
 	}
 	/**

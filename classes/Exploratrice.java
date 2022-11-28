@@ -106,7 +106,7 @@ public class Exploratrice extends Agent{
      */
     public void moveTo(int x,int y, Jardin jard){
         jard.videCaseAgent(this.x,this.y);
-        super.setPosition(x,y);
+        super.seDeplacer(x,y);
         jard.setCase(x,y,this);
     }
 
