@@ -47,10 +47,14 @@ public class TestSimulation {
 			s.getJardin().affiche(5);
 			s.getTerrain().affiche(5);
 
-			System.out.println("---------------------------  LOGS --------------------------------");
-			System.out.println(log);
-			System.out.println(s.getJardin().toString());
-			System.out.println(s.getTerrain().toString());
+			if(args[1] == "1"){
+				System.out.println("---------------------------  LOGS --------------------------------");
+				System.out.println(log);
+				System.out.println(s.getJardin().toString());
+				System.out.println(s.getTerrain().toString());
+			}
+
+			
 			
 			scan.nextLine();
 		}

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Exploratrice extends Agent{
 
-    public static final int ENERGIE_MAX = 20;
+    public static final int ENERGIE_MAX = 30;
     public static final int MAX_CHAMPI_PORTE = 2;
     public static final int DUREE_VIE_MAX = 50;
 

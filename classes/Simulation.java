@@ -27,6 +27,7 @@ public class Simulation {
         r.popExplo(jar);
         r.popExplo(jar);
         r.popExplo(jar);
+        r.popExplo(jar);
 
         System.out.println("----------- INITIALISATION FAITE ------------");
     }
@@ -194,6 +195,8 @@ public class Simulation {
 
                 if(e.getChampiPorte().size() == Exploratrice.MAX_CHAMPI_PORTE){
                     //POSER AU SOL UNIQUEMENT SI SOL VIDE
+
+                    //A FAIRE : Poser champi sur une case valide AUTOUR DE LA FOURMI
                     if(ter.getCase(e.getX(),e.getY())==null){
                         ter.setCase(e.getX(),e.getY(),c);
                         log += " -> Posé au sol\n";
