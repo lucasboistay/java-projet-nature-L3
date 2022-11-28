@@ -184,6 +184,54 @@ public class Simulation {
         return log;
     }
 
+    private String transfoFeuille(){
+        ArrayList<Exploratrice> listeExplo = Exploratrice.getExploList();
+        String log = "";
+
+        for(Exploratrice e : listeExplo){
+            Feuille f = e.getFeuille();
+
+            log += e.toString();
+
+            if(f == null){
+                log += " Pas de feuille\n";
+                continue;
+            }
+
+            f.tempsPasseTransfo();
+            log += " Feuille durée :" + f.getDureeTransfo() + " - ";
+
+            if(f.getDureeTransfo() == 0){
+                log += "Feuille se transforme en champignon sur fourmi ";
+                e.removeFeuille();
+
+                Champignon c = new Champignon();
+
+                if(e.getChampiPorte().size() == Exploratrice.MAX_CHAMPI_PORTE){
+                    //POSER AU SOL UNIQUEMENT SI SOL VIDE
+                    if(ter.getCase(e.getX(),e.getY())==null){
+                        ter.setCase(e.getX(),e.getY(),c);
+                        log += " -> Posé au sol\n";
+                    } else{
+                        c.retirer();
+                        log += " -> détruit, sol pas libre\n";
+                    }
+                    
+                }
+                else{
+                    e.addChampiPorte(c);
+                    c.estPorte = true;
+                    log += " -> Récupéré par la fourmi\n";
+                }
+            }
+            else{
+                log += "\n";
+            }
+        }
+
+        return log;
+    }
+
     // RENVOIE LES LOGS
     public String iteration(){
         // Vérifie l'age des fourmis
@@ -209,13 +257,15 @@ public class Simulation {
 
         //Si temps transfo = 0, fourmi transforme feuille en champi.
         // Si déjà MAX_CHAMPI sur elle, elle dépose au sol.
+        String transform = transfoFeuille();
 
         //Fourmi move. 
         moveExplo();
 
         return "Fourmi Né : " + fourmiForme + "\n" + 
             "Feuilles Formée : " + "\n" +
-            fourmiAttrape + "\n" + 
+            "Fourmis attrape" + "\n" + fourmiAttrape + "\n" + 
+            "Transformation : "+ "\n" + transform + "\n" + 
             "\n";
 
     }

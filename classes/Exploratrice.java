@@ -61,6 +61,10 @@ public class Exploratrice extends Agent{
         this.duree_vie --;
     }
 
+    public void removeFeuille(){
+        this.feuille_porte = null;
+    }
+
     /**
      * Renvoie 1 si l'ajout a été fait
      * Renvoie -1 sinon

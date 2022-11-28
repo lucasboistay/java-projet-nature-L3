@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class TestSimulation {
 
-	public static final int MAX_ITERATION = 50;
+	public static final int MAX_ITERATION = 300;
 	public static Scanner scan = new Scanner(System.in);
 
 	/**
