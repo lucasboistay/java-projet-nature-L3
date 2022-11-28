@@ -1,5 +1,5 @@
 /**
- * @author Lucas
+ * @author Lucas BOISTAY
  * 
  * Gestion d'un terrain
  *
@@ -62,7 +62,7 @@ public class Test {
 		System.out.println("----------------- TEST DES AGENTS ---------------------");
 		Jardin j = new Jardin(10,10);
 
-		Reine reine = Reine.INSTANCE;
+		Reine reine = new Reine();
 
 		j.setCase(0,5,reine);
 

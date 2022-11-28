@@ -11,9 +11,7 @@ public class Reine extends Agent{
     public static final int CHAMPI_CREATION_FOURMI = 3;
     public static final int MAX_FOURMI = 10;
 
-    public static Reine INSTANCE = new Reine();
-
-    private Reine(){
+    public Reine(){
         super("Reine");
 
     }
@@ -51,10 +49,6 @@ public class Reine extends Agent{
         jard.setCase(this.x+dx,this.y+dy,e);
 
         return e;
-    }
-
-    public static void removeExplo(Exploratrice e, Jardin j){
-        j.videCaseAgent(e.getX(),e.getY());
     }
 
     public String toString(){

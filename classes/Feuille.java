@@ -10,6 +10,7 @@ public class Feuille extends Ressource{
 
 	private int dureeVie;
 	private int dureeTransfo;
+	public boolean estPorte;
 
 	public static final int DUREE_VIE_MAX = 10;
 	public static final int DUREE_TRANSFO_MAX = 3;
@@ -21,8 +22,18 @@ public class Feuille extends Ressource{
 
 		this.dureeVie = DUREE_VIE_MAX;
 		this.dureeTransfo = DUREE_TRANSFO_MAX;
+		this.estPorte = false;
 
 		this.listeFeuille.add(this);
+	}
+
+	public static Feuille getFeuilleByID(int id){
+		for(Feuille f : listeFeuille){
+			if(f.ident == id){
+				return f;
+			}
+		}
+		return null;
 	}
 
 	public static ArrayList<Feuille> getFeuilleList(){
