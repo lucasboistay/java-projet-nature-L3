@@ -142,6 +142,33 @@ public class Exploratrice extends Agent{
         return 1;
     }
 
+    public int popChampi(Terrain t){
+        int dx = (int) (Math.random() * 3) - 1;
+        int dy = (int) (Math.random() * 3) - 1;
+
+        boolean b = false; // ON teste si il existe une case vide autour de la fourmi
+        for(int i=-1 ; i < 2 ; i ++){
+            for(int j =-1 ; j < 2 ; j++){
+                if(t.caseEstVide(this.x + i,this.y + j)){
+                    b = true;
+                }
+            }
+        }
+
+        if(!b){ //On renvoie null si pas de case dispo
+            return -1;
+        }
+
+        while((dx==0 && dy == 0) || (!t.caseEstVide(this.x+dx,this.y+dy))){ // ON évite que la fourmi spawn sur la case Reine ou sur un autre agent
+            dx = (int) (Math.random() * 3) - 1;
+            dy = (int) (Math.random() * 3) - 1;
+        }
+
+        Champignon c = new Champignon();
+        t.setCase(this.x+dx , this.y+dy, c);
+        return 1;
+    }
+
 
     public String toString(){
         return super.toString() + " Stats : {energie:" + this.energie + ",duree_vie:" + this.duree_vie+"}";

@@ -35,7 +35,12 @@ public class TestSimulation {
 
 		scan.nextLine();
 
+		boolean logAffiche = false;
+
 		String log;
+		if(args[1] == "1"){
+			logAffiche = true;
+		}
 
 		for(int i = 0 ; i<iteration;i++){
 
@@ -47,7 +52,7 @@ public class TestSimulation {
 			s.getJardin().affiche(5);
 			s.getTerrain().affiche(5);
 
-			if(args[1] == "1"){
+			if(logAffiche){
 				System.out.println("---------------------------  LOGS --------------------------------");
 				System.out.println(log);
 				System.out.println(s.getJardin().toString());

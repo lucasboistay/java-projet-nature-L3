@@ -200,7 +200,12 @@ public class Simulation {
                     if(ter.getCase(e.getX(),e.getY())==null){
                         ter.setCase(e.getX(),e.getY(),c);
                         log += " -> Posé au sol\n";
-                    } else{
+                    } 
+                    else if(e.popChampi(ter)==1){
+                        log += " -> Posé au sol autour\n";
+                    }
+                    else{
+
                         e.mange();
                         c.retirer();
                         log += " -> mangé car sol pas libre\n";
