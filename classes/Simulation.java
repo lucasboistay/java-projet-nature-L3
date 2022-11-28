@@ -313,7 +313,7 @@ public class Simulation {
 
         return "Fourmi Né : " + fourmiForme + "\n" + 
             "Mort Temps : "+ "\n"+ temps + "\n" +
-            "Mort Energie : "+ "\n"+ energie + "\n" +
+            "Energie : "+ "\n"+ energie + "\n" +
             "Fourmis attrape" + "\n" + fourmiAttrape + "\n" + 
             "Transformation : "+ "\n" + transform + "\n" + 
             "\n";

@@ -54,7 +54,12 @@ public class Exploratrice extends Agent{
     // SETTEUR
 
     public void mange(){
-        this.energie += Champignon.ENERGIE_RENDU;
+        if(this.energie + Champignon.ENERGIE_RENDU >= ENERGIE_MAX){
+            this.energie = ENERGIE_MAX;
+        }
+        else{
+            this.energie += Champignon.ENERGIE_RENDU;
+        }
     }
 
     public void energieDiminue(){
