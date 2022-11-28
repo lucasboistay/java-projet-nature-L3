@@ -13,12 +13,14 @@ public class Champignon extends Ressource{
 	private static ArrayList<Champignon> listeChampi = new ArrayList<>();
 
 	private int dureeVie;
+	public boolean estPorte;
 
 	public Champignon(){
 		super("Champignon",1);
 
 		this.dureeVie = DUREE_VIE_MAX;
 		this.listeChampi.add(this);
+		this.estPorte = false;
 	}
 
 	public static ArrayList<Champignon> getChampiList(){
