@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Exploratrice extends Agent{
 
     public static final int ENERGIE_MAX = 20;
-    public static final int MAX_CHAMPI_PORTE = 3;
+    public static final int MAX_CHAMPI_PORTE = 2;
     public static final int DUREE_VIE_MAX = 50;
 
     private static ArrayList<Exploratrice> listeExplo = new ArrayList<>();
@@ -53,6 +53,10 @@ public class Exploratrice extends Agent{
 
     // SETTEUR
 
+    public void mange(){
+        this.energie += Champignon.ENERGIE_RENDU;
+    }
+
     public void energieDiminue(){
         this.energie --;
     }
@@ -63,6 +67,10 @@ public class Exploratrice extends Agent{
 
     public void removeFeuille(){
         this.feuille_porte = null;
+    }
+
+    public void removeExplo(){
+        this.listeExplo.remove(this);
     }
 
     /**

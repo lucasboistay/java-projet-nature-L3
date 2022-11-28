@@ -12,8 +12,8 @@ public class Feuille extends Ressource{
 	private int dureeTransfo;
 	public boolean estPorte;
 
-	public static final int DUREE_VIE_MAX = 10;
-	public static final int DUREE_TRANSFO_MAX = 3;
+	public static final int DUREE_VIE_MAX = 20;
+	public static final int DUREE_TRANSFO_MAX = 2;
 
 	private static ArrayList<Feuille> listeFeuille = new ArrayList<>();
 
@@ -34,6 +34,10 @@ public class Feuille extends Ressource{
 			}
 		}
 		return null;
+	}
+
+	public void removeFeuille(){
+		listeFeuille.remove(this);
 	}
 
 	public static ArrayList<Feuille> getFeuilleList(){
