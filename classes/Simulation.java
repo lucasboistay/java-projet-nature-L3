@@ -159,7 +159,9 @@ public class Simulation {
         //Fourmi move. 
         moveExplo();
 
-        return "Fourmi Né : " + fourmiForme;
+        return "Fourmi Né : " + fourmiForme + "\n" + 
+            "banane" + "\n" +
+            "\n";
 
     }
 
