@@ -19,7 +19,7 @@ cd java-projet-nature-L3/classes/
 
 ### Puis, lancer la commande :
 ```sh
-"java TestSimulation"
+java TestSimulation
 ```
 
 ## Arguments
