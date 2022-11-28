@@ -102,7 +102,7 @@ public class Test {
 
 		
 
-		for(int i=0;i<50;i++){
+		for(int i=0;i<10;i++){
 			for(Exploratrice explo : listeExplo){
 				explo.moveToRand(j);
 			}
@@ -110,7 +110,7 @@ public class Test {
 			j.affiche(5);
 
 			scan.nextLine();
-
+			Temps.fairePasserTemps(j,t);
 		}
 
 		System.out.println("--------------------------------------");
@@ -124,6 +124,10 @@ public class Test {
 		}
 
 		System.out.println(j);
+
+		for (Ressource r : liste) {
+			System.out.println(r);
+		}
 
 		System.out.println("--------------------------------------");
 		

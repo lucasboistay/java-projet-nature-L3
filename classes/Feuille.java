@@ -4,6 +4,8 @@
  * Classe de ressource Feuille, hérite de Ressource
  */
 
+import java.util.ArrayList; 
+
 public class Feuille extends Ressource{
 
 	private int dureeVie;
@@ -12,13 +14,20 @@ public class Feuille extends Ressource{
 	public static final int DUREE_VIE_MAX = 10;
 	public static final int DUREE_TRANSFO_MAX = 3;
 
+	private static ArrayList<Feuille> listeFeuille = new ArrayList<>();
+
 	public Feuille(){
 		super("Feuille",1);
 
 		this.dureeVie = DUREE_VIE_MAX;
 		this.dureeTransfo = DUREE_TRANSFO_MAX;
+
+		this.listeFeuille.add(this);
 	}
 
+	public static ArrayList<Feuille> getFeuilleList(){
+        return listeFeuille;
+    }
 	public int getDureeVie(){
 		return this.dureeVie;
 	}
