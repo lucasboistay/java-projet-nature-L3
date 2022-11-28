@@ -1,6 +1,7 @@
 # java-projet-nature-L3
 ## Résumé :
 Un projet en java pour gérer les classes, les héritages sur le thème de la nature.
+A faire tourner sur Linux !
 
 ## Fichiers :
 /doc contient les documents de base donné par l'énoncé (classes Ressource et Terrain).
@@ -18,12 +19,11 @@ cd java-projet-nature-L3/classes/
 
 Puis, lancer la commande :
 ```sh
-"java Test"
+"java TestSimulation"
 ```
 
-## Améliorations :
+## Améliorations possibles :
 
-- Finir les classes Agent
-- Créer classe vent pour faire tomber les feuilles
-- Classe d'affichage générale
-- Classe qui fait tourner la simulation
+- Affichage graphique plus intéressant
+- Faire plusieurs fourmilières
+- Faire de nouvelles ressources
