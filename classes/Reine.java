@@ -20,7 +20,7 @@ public class Reine extends Agent{
 
     // SETTEUR
 
-    /**
+    /**@param jard Jardin sur lequel va pop une explo
      * Renvoie une Exploratrice qui spawn aléatoirement autour de la reine
      * Renvoie null si pas de possibilité de spawn
      */
