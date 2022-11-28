@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Champignon extends Ressource{
 	public static final int ENERGIE_RENDU = 5;
-	public static final int DUREE_VIE_MAX = 20;
+	public static final int DUREE_VIE_MAX = 10;
 
 	private static ArrayList<Champignon> listeChampi = new ArrayList<>();
 
@@ -38,7 +38,6 @@ public class Champignon extends Ressource{
 
     public void retirer(){
     	this.listeChampi.remove(this);
-    	super.initialisePosition();
     }
 	public int getDureeVie(){
 		return this.dureeVie;

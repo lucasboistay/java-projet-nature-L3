@@ -10,17 +10,29 @@ A faire tourner sur Linux !
 
 ## Installation : 
 
-Ouvrir le terminal et copier :
+### Ouvrir le terminal et copier :
 
 ```sh
 git clone https://github.com/Rockinfox91/java-projet-nature-L3.git
 cd java-projet-nature-L3/classes/
 ```
 
-Puis, lancer la commande :
+### Puis, lancer la commande :
 ```sh
 "java TestSimulation"
 ```
+
+## Arguments
+### Les options possibles sont :
+```sh
+-i [int]
+```
+Pour gérer le nombre d'itération
+
+```sh
+-log
+```
+Pour afficher les logs à chaque itération
 
 ## Améliorations possibles :
 

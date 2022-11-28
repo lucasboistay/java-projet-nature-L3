@@ -18,29 +18,15 @@ public class Simulation {
         this.jar = new Jardin(x,y);
         this.ter = new Terrain(x,y);
 
-        Champignon c1 = new Champignon();
-        Champignon c2 = new Champignon();
-        Champignon c3 = new Champignon();
-        Champignon c4 = new Champignon();
-        Champignon c5 = new Champignon();
-        Champignon c6 = new Champignon();
-        Champignon c7 = new Champignon();
-
-
-
-        ter.setCase(0,0,c1);
-        ter.setCase(2,2,c2);
-        ter.setCase(3,3,c3);
-        ter.setCase(4,4,c4);
-        ter.setCase(1,1,c5);
-        ter.setCase(5,5,c6);
-        ter.setCase(6,6,c7);
-
+        this.popTree();
         this.popTree();
         this.popTree();
         this.popTree();
 
         this.r = this.popQueen();
+        r.popExplo(jar);
+        r.popExplo(jar);
+        r.popExplo(jar);
         r.popExplo(jar);
 
         System.out.println("----------- INITIALISATION FAITE ------------");
@@ -121,11 +107,17 @@ public class Simulation {
             }
             if(champiPasPorte.size() == 3){
                 Exploratrice e = r.popExplo(jar);
-                for (Champignon champ : champiPasPorte){
-                    ter.videCase(champ.getX(),champ.getY());
-                    champ.retirer();   
+                if(e != null){
+                    for (Champignon champ : champiPasPorte){
+                        ter.videCase(champ.getX(),champ.getY());
+                        champ.retirer();   
+                    }
+                    return e.toString();
                 }
-                return e.toString();
+                else{
+                    break;
+                }
+                
             }
         }
         return "Aucune";
@@ -209,12 +201,20 @@ public class Simulation {
 
                 if(e.getChampiPorte().size() == Exploratrice.MAX_CHAMPI_PORTE){
                     //POSER AU SOL UNIQUEMENT SI SOL VIDE
+
+                    //A FAIRE : Poser champi sur une case valide AUTOUR DE LA FOURMI
                     if(ter.getCase(e.getX(),e.getY())==null){
                         ter.setCase(e.getX(),e.getY(),c);
                         log += " -> Posé au sol\n";
-                    } else{
+                    } 
+                    else if(e.popChampi(ter)==1){
+                        log += " -> Posé au sol autour\n";
+                    }
+                    else{
+
+                        e.mange();
                         c.retirer();
-                        log += " -> détruit, sol pas libre\n";
+                        log += " -> mangé car sol pas libre\n";
                     }
                     
                 }
@@ -232,13 +232,86 @@ public class Simulation {
         return log;
     }
 
+    private String mortTemps(){
+        ArrayList<Exploratrice> listeExplo = new ArrayList<>(Exploratrice.getExploList());
+        ArrayList<Feuille> listeFeuille = new ArrayList<>(Feuille.getFeuilleList());
+        ArrayList<Champignon> listeChampi = new ArrayList<>(Champignon.getChampiList());
+
+        String log = "";
+
+        Temps.fairePasserTemps(jar,ter);
+
+        //fourmi
+        if(listeExplo != null){
+            for(Exploratrice e : listeExplo){
+                if(e.getDureeVie() == 0){
+                    log += e.toString() + " Retiré\n";
+                    jar.videCaseAgent(e.getX(),e.getY());
+                    e.removeExplo();
+                }
+            }
+        }
+        //Feuille
+        if(listeFeuille != null){
+            for(Feuille f : listeFeuille){
+                if(f.getDureeVie() == 0){
+                    log += f.toString() + " Retiré\n";
+                    ter.videCase(f.getX(),f.getY());
+                    f.removeFeuille();
+                }
+            }
+        }
+        //Champi
+        if(listeChampi != null){
+            for(Champignon c : listeChampi){
+                if(c.getDureeVie() == 0){
+                    log += c.toString() + " Retiré\n";
+                    ter.videCase(c.getX(),c.getY());
+                    c.retirer();
+                }
+            }
+        }
+
+        return log;
+    }
+
+    private String mortEnergie(){
+        ArrayList<Exploratrice> listeExplo = new ArrayList<>(Exploratrice.getExploList());
+        String log = "";
+
+
+
+        //fourmi
+        if(listeExplo != null){
+            for(Exploratrice e : listeExplo){
+                e.energieDiminue();
+                if(e.getEnergie() == 0){
+
+                    if(e.getChampiPorte().size() == 0){
+                        log += e.toString() + " Retiré\n";
+                        jar.videCaseAgent(e.getX(),e.getY());
+                        e.removeExplo();
+                    }
+                    else{
+                        e.mange();
+                        e.getChampiPorte().remove(e.getChampiPorte().get(0));
+                        log += e.toString() + " a mangé un champi\n";
+                    }
+                }
+            }
+        }
+        return log;
+
+    }
+
     // RENVOIE LES LOGS
     public String iteration(){
         // Vérifie l'age des fourmis
         // Vérifie l'age des feuilles
-        // Vérifie l'age des Champignons
+        String temps = mortTemps();
 
         //Vérifie Energie des fourmis
+        String energie = mortEnergie();
 
         //Pop feuille sur les arbres
         popFeuilles();
@@ -263,7 +336,8 @@ public class Simulation {
         moveExplo();
 
         return "Fourmi Né : " + fourmiForme + "\n" + 
-            "Feuilles Formée : " + "\n" +
+            "Mort Temps : "+ "\n"+ temps + "\n" +
+            "Energie : "+ "\n"+ energie + "\n" +
             "Fourmis attrape" + "\n" + fourmiAttrape + "\n" + 
             "Transformation : "+ "\n" + transform + "\n" + 
             "\n";
