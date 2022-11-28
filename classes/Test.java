@@ -1,11 +1,12 @@
 /**
- * @author Lucas
+ * @author Lucas BOISTAY
  * 
  * Gestion d'un terrain
  *
  */
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Test {
 
@@ -33,7 +34,7 @@ public class Test {
 
 		Champignon c1 = new Champignon();
 		if (t.setCase(0,0,c1))
-			System.out.println("Ajout de " +c1+" valide !");
+			System.out.println("Ajout de " +c1+ "valide !");
 		else
 			System.out.println("Ajout incorrect: problème de coordonnées !");
 
@@ -58,26 +59,75 @@ public class Test {
 
 		/***************************************************/
 
-		Agent agent1 = new Agent("Fourmi");
-		System.out.println(agent1);
+		System.out.println("----------------- TEST DES AGENTS ---------------------");
+		Jardin j = new Jardin(10,10);
 
-		Agent agent2 = new Agent("Reine");
-		System.out.println(agent2);
+		Reine reine = new Reine();
 
-		Jardin j = new Jardin(5,5);
+		j.setCase(0,5,reine);
 
-		j.setCase(1,1,agent1);
-		j.setCase(2,2,agent2);
+		System.out.println("Reine : " + reine);
+
+		System.out.println("--------------- Ajout de 3 fourmis --------------");
+
+		reine.popExplo(j);
+		reine.popExplo(j);
+
+		Exploratrice e = reine.popExplo(j);
+
+		System.out.println("Fourmi suivi : " + e);
+
+		j.affiche(6);
+
+		System.out.println("------------------Ajout de 3 fourmis ------------------");
+
+		
+		reine.popExplo(j);
+		reine.popExplo(j);
+		reine.popExplo(j);
+
+		j.affiche(6);
+
+		ArrayList<Exploratrice> listeExplo = Exploratrice.getExploList();
+		System.out.println("Liste des Explo présent actuellement : ");
+		for(Exploratrice explo : listeExplo){
+			System.out.println(explo);
+		}
+
+		Scanner scan = new Scanner(System.in);
+
+		scan.nextLine();
+
+		System.out.println("-----------------Deplacement Fourmis--------------------");
+
+		
+
+		for(int i=0;i<10;i++){
+			for(Exploratrice explo : listeExplo){
+				explo.moveToRand(j);
+			}
+			System.out.println("\033\143");
+			j.affiche(5);
+
+			scan.nextLine();
+			Temps.fairePasserTemps(j,t);
+		}
+
+		System.out.println("--------------------------------------");
+		
 		ArrayList<Agent> listeAgent = j.lesAgents();
+
 
 		System.out.println("Liste des Agents présent actuellement : ");
 		for(Agent a : listeAgent){
 			System.out.println(a);
 		}
 
-		j.affiche(6);
-
 		System.out.println(j);
+
+		for (Ressource r : liste) {
+			System.out.println(r);
+		}
 
 		System.out.println("--------------------------------------");
 		
