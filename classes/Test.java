@@ -1,5 +1,5 @@
 /**
- * @author Lucas
+ * @author Lucas BOISTAY
  * 
  * Gestion d'un terrain
  *
