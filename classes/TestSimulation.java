@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class TestSimulation {
 
-	public static final int MAX_ITERATION = 300;
+	public static final int MAX_ITERATION = 1000;
 	public static Scanner scan = new Scanner(System.in);
 
 	/**
@@ -18,35 +18,46 @@ public class TestSimulation {
 	 */
 	public static void main(String[] args) {
 
-		if(args.length < 1){
-			System.out.println("PAS ASSEZ D'ARGUMENTS !!");
-			System.exit(-1);
-		}
+		//Gestion Arguments
+		int iteration = MAX_ITERATION;
+		boolean logAffiche = false;
+
+		for(int i=0; i < args.length ; i++){
+
+			String argum = args[i];
+			String value;
+
+			switch(argum){
+				case "-i":
+					i++;
+					value = args[i];
+					iteration = Integer.parseInt(value);
+					if(iteration > MAX_ITERATION){
+						iteration = MAX_ITERATION;
+					}
+					System.out.println(argum + " : " + value+"\n");
+					break;
+				case "-log":
+					logAffiche = true;
+					System.out.println("Affichage log\n");
+					break;
+			}
+		} 
+
+		// CREATION DE LA SIMULATION
 
 		Simulation s = new Simulation(10,10);
+
+		//AFFICHAGE INITIAL
 
 		s.getJardin().affiche(5);
 		s.getTerrain().affiche(5);
 
-		int iteration = Integer.parseInt(args[0]);
-		if(iteration > MAX_ITERATION){
-			iteration = MAX_ITERATION;
-		}
-
 		scan.nextLine();
-
-		//Gestion Arguments
-
-		boolean logAffiche = false;
-
-		String log;
-		if(args[1] == "1"){
-			logAffiche = true;
-		}
 
 		for(int i = 0 ; i<iteration;i++){
 
-			log = s.iteration();
+			String log = s.iteration();
 
 			System.out.println("\033\143");
 			System.out.println("---------------------------   I : " + i +"  --------------------------------");
@@ -57,12 +68,9 @@ public class TestSimulation {
 			if(logAffiche){
 				System.out.println("---------------------------  LOGS --------------------------------");
 				System.out.println(log);
-				System.out.println(s.getJardin().toString());
-				System.out.println(s.getTerrain().toString());
 			}
-
-			
-			
+			System.out.println(s.getJardin().toString());
+			System.out.println(s.getTerrain().toString());
 			scan.nextLine();
 		}
 

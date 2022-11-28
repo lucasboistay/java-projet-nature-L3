@@ -107,11 +107,17 @@ public class Simulation {
             }
             if(champiPasPorte.size() == 3){
                 Exploratrice e = r.popExplo(jar);
-                for (Champignon champ : champiPasPorte){
-                    ter.videCase(champ.getX(),champ.getY());
-                    champ.retirer();   
+                if(e != null){
+                    for (Champignon champ : champiPasPorte){
+                        ter.videCase(champ.getX(),champ.getY());
+                        champ.retirer();   
+                    }
+                    return e.toString();
                 }
-                return e.toString();
+                else{
+                    break;
+                }
+                
             }
         }
         return "Aucune";
