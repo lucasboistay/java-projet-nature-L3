@@ -1,1 +1,0 @@
-INDEX VERSION 1.131+S:\Dev\Java\java-projet-nature-L3\.metadata\.plugins\org.eclipse.jdt.core

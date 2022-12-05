@@ -14,12 +14,13 @@ A faire tourner sur Linux !
 
 ```sh
 git clone https://github.com/Rockinfox91/java-projet-nature-L3.git
-cd java-projet-nature-L3/classes/
+cd java-projet-nature-L3/
 ```
 
-### Puis, lancer la commande :
+### Puis, lancer les commande :
 ```sh
-java TestSimulation
+javac -cp src -d bin src/*.java
+java -cp bin TestSimulation
 ```
 
 ## Arguments
