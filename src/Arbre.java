@@ -47,7 +47,6 @@ public class Arbre extends Ressource{
         }
 
         if(!b){ //On renvoie -1 si pas de case dispo
-            System.out.println("PAS DE CASE DISPO, pas de Feuille créer...");
             return -1;
         }
 

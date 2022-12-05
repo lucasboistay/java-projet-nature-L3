@@ -3,3 +3,5 @@ description.doc
 bin/
 privatedoc/
 README_Pour_correction.txt
+logs.txt
+logs_sans_description.txt
