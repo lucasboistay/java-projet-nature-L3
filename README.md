@@ -19,7 +19,7 @@ cd java-projet-nature-L3/
 
 ### Puis, lancer les commande :
 ```sh
-javac -cp src -d bin src/*.java
+javac -cp classes -d bin src/*.java
 java -cp bin TestSimulation
 ```
 
