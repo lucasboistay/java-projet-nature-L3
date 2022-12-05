@@ -6,7 +6,7 @@
 
 import java.util.ArrayList; 
 
-public class Exploratrice extends Agent{
+public class Exploratrice extends Agent implements Mortel{
 
     public static final int ENERGIE_MAX = 20;
     public static final int MAX_CHAMPI_PORTE = 3;
@@ -21,7 +21,7 @@ public class Exploratrice extends Agent{
     private Feuille feuille_porte;
 
 
-    public Exploratrice(){
+    public Exploratrice() {
         super("Explo");
 
         this.energie = ENERGIE_MAX;
@@ -35,10 +35,11 @@ public class Exploratrice extends Agent{
     public static ArrayList<Exploratrice> getExploList(){
         return listeExplo;
     }
+    @Override
     public int getEnergie(){
         return this.energie;
     }
-
+    @Override
     public int getDureeVie(){
         return this.duree_vie;
     }
@@ -52,7 +53,7 @@ public class Exploratrice extends Agent{
     }
 
     // SETTEUR
-
+    @Override
     public void mange(){
         if(this.energie + Champignon.ENERGIE_RENDU >= ENERGIE_MAX){
             this.energie = ENERGIE_MAX;
@@ -61,11 +62,11 @@ public class Exploratrice extends Agent{
             this.energie += Champignon.ENERGIE_RENDU;
         }
     }
-
+    @Override
     public void energieDiminue(){
         this.energie --;
     }
-
+    @Override
     public void tempsPasseVie(){
         this.duree_vie --;
     }
@@ -169,7 +170,7 @@ public class Exploratrice extends Agent{
         return 1;
     }
 
-
+    @Override
     public String toString(){
         return super.toString() + " Stats : {energie:" + this.energie + ",duree_vie:" + this.duree_vie+"}";
     }

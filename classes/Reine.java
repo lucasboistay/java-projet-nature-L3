@@ -13,7 +13,6 @@ public class Reine extends Agent{
 
     public Reine(){
         super("Reine");
-
     }
 
     // SETTEUR
@@ -51,6 +50,7 @@ public class Reine extends Agent{
         return e;
     }
 
+    @Override
     public String toString(){
         return super.toString();
     }
