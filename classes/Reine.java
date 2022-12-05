@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class Reine extends Agent{
 
     public static final int CHAMPI_CREATION_FOURMI = 3;
-    public static final int MAX_FOURMI = 10;
 
     public Reine(){
         super("Reine");
