@@ -3,9 +3,8 @@
 Un projet en java pour gérer les classes, les héritages, les exceptions et les interfaces sur le thème de la nature.
 
 ## Fichiers :
+
 /doc contient les JavaDocs.
-/src contient toutes les classes du projet.
-/classes contient les classes initiales de l'énoncé.
 
 ## Installation : 
 
@@ -18,7 +17,6 @@ cd java-projet-nature-L3/
 
 ### Puis, lancer les commande :
 ```sh
-javac -cp classes -d bin src/*.java
 java -cp bin TestSimulation
 ```
 

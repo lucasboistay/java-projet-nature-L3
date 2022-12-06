@@ -1,6 +1,8 @@
 description.pdf
 description.doc
-bin/
+classes/
+src/
+Classe_UML.png
 privatedoc/
 README_Pour_correction.txt
 logs.txt
