@@ -34,6 +34,17 @@ Pour gérer le nombre d'itération
 ```
 Pour afficher les logs à chaque itération
 
+## JavaDoc
+
+Pour avoir une doc java client, entrez :
+```sh
+javadoc -cp src -d doc src/*.java
+```
+et pour une doc java fournisseur : 
+```sh
+javadoc -cp src -private -d privatedoc src/*.java
+``` 
+
 ## Améliorations possibles :
 
 - Affichage graphique plus intéressant
