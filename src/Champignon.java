@@ -42,13 +42,27 @@ public class Champignon extends Ressource{
 	public int getDureeVie(){
 		return this.dureeVie;
 	}
+	private void setDureeVie(int duree){
+		this.dureeVie = duree;
+	}
 
 	public void tempsPasseVie(){
 		this.dureeVie --;
 	}
 
+
+	@Override
 	public String toString(){
 		return super.toString() + " Vie : "+this.dureeVie;
+	}
+
+	@Override
+	public Champignon clone(){
+		Champignon c = new Champignon();
+		c.setDureeVie(this.dureeVie);
+		c.estPorte = this.estPorte;
+
+		return c;
 	}
 
 }

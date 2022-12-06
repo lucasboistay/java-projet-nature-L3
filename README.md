@@ -1,12 +1,11 @@
 # java-projet-nature-L3
 ## Résumé :
-Un projet en java pour gérer les classes, les héritages sur le thème de la nature.
-A faire tourner sur Linux !
+Un projet en java pour gérer les classes, les héritages, les exceptions et les interfaces sur le thème de la nature.
+Version de développement.
 
 ## Fichiers :
-/doc contient les documents de base donné par l'énoncé (classes Ressource et Terrain).
-
-/classes contient toutes les classes du projet
+/src contient toutes les classes du projet.
+/classes contient les classes initiales de l'énoncé.
 
 ## Installation : 
 
@@ -14,12 +13,13 @@ A faire tourner sur Linux !
 
 ```sh
 git clone https://github.com/Rockinfox91/java-projet-nature-L3.git
-cd java-projet-nature-L3/classes/
+cd java-projet-nature-L3/
 ```
 
-### Puis, lancer la commande :
+### Puis, lancer les commande :
 ```sh
-"java TestSimulation"
+javac -cp classes -d bin src/*.java
+java -cp bin TestSimulation
 ```
 
 ## Arguments

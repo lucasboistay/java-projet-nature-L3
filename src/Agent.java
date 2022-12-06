@@ -6,7 +6,7 @@
 
 import java.util.ArrayList; 
 
-public class Agent{
+public abstract class Agent{
 	public static final int MAX_AGENT = 100;
 
 	private final int ident;
@@ -35,7 +35,7 @@ public class Agent{
 		return this.y;
 	}
 
-	public void setPosition(int x, int y){
+	public void seDeplacer(int x, int y){
 		this.x = x;
 		this.y = y;
 	}

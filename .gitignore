@@ -1,6 +1,8 @@
+description.pdf
+description.doc
+bin/
+README_Pour_correction.txt
+logs.txt
+logs_sans_description.txt
 doc/
-decription.doc
-description.odt
-LU2IN002-projet2022.pdf
-classes/Terrain.class
-classes/Ressource.class
+privatedoc/

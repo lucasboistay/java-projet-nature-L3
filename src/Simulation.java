@@ -88,7 +88,11 @@ public class Simulation {
         }
     }
 
-    private void moveExplo(){
+    private void moveExplo() throws TouteCasePleine {
+        if(jar.lesAgents().size() >= jar.getLigne()*jar.getColonne()){
+            throw new TouteCasePleine();
+        }
+
         ArrayList<Exploratrice> listeExplo = Exploratrice.getExploList();
 
         for(Exploratrice e : listeExplo){
@@ -333,7 +337,11 @@ public class Simulation {
         String transform = transfoFeuille();
 
         //Fourmi move. 
-        moveExplo();
+        try{
+            moveExplo();
+        } catch (TouteCasePleine e){
+            e.printStackTrace();
+        }
 
         return "Fourmi Né : " + fourmiForme + "\n" + 
             "Mort Temps : "+ "\n"+ temps + "\n" +
@@ -341,6 +349,7 @@ public class Simulation {
             "Fourmis attrape" + "\n" + fourmiAttrape + "\n" + 
             "Transformation : "+ "\n" + transform + "\n" + 
             "\n";
+
 
     }
 
