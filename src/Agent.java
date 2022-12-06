@@ -35,6 +35,10 @@ public abstract class Agent{
 		return this.y;
 	}
 
+	public double distance(int x, int y){
+		return Math.sqrt(Math.pow(x-this.x, 2)+Math.pow(y-this.y, 2));
+	}
+
 	public void seDeplacer(int x, int y){
 		this.x = x;
 		this.y = y;
