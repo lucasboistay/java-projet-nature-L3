@@ -1,10 +1,11 @@
 # java-projet-nature-L3
 ## Résumé :
 Un projet en java pour gérer les classes, les héritages, les exceptions et les interfaces sur le thème de la nature.
+Version de développement.
 
 ## Fichiers :
-
-/doc contient les JavaDocs.
+/src contient toutes les classes du projet.
+/classes contient les classes initiales de l'énoncé.
 
 ## Installation : 
 
@@ -17,6 +18,7 @@ cd java-projet-nature-L3/
 
 ### Puis, lancer les commande :
 ```sh
+javac -cp classes -d bin src/*.java
 java -cp bin TestSimulation
 ```
 
@@ -31,6 +33,17 @@ Pour gérer le nombre d'itération
 -log
 ```
 Pour afficher les logs à chaque itération
+
+## JavaDoc
+
+Pour avoir une doc java client, entrez :
+```sh
+javadoc -cp src -d doc src/*.java
+```
+et pour une doc java fournisseur : 
+```sh
+javadoc -cp src -private -d privatedoc src/*.java
+``` 
 
 ## Améliorations possibles :
 
