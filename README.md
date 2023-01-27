@@ -1,11 +1,15 @@
 # java-projet-nature-L3
 ## Résumé :
 Un projet en java pour gérer les classes, les héritages, les exceptions et les interfaces sur le thème de la nature.
+
 Version utilisateur
 
 ## Fichiers :
+
 /classes contient les classes initiales de l'énoncé.
+
 /bin contient les classes compilés
+
 /doc contient les Javadocs clients
 
 ## Installation : 
